@@ -25,21 +25,42 @@
  */
 public class Solution
 {
+    // 递归
+    // public IList<int> PreorderTraversal(TreeNode root)
+    // {
+    //     var res = new List<int>();
+    //     if (root == null) return res;
+    //     Traversal(root, res);
+    //     return res;
+
+    // }
+    // public void Traversal(TreeNode cur, IList<int> res)
+    // {
+    //     if (cur == null) return;
+    //     res.Add(cur.val);
+    //     Traversal(cur.left, res);
+    //     Traversal(cur.right, res);
+    // }
+
+    // 迭代
     public IList<int> PreorderTraversal(TreeNode root)
     {
+        var st = new Stack<TreeNode>();
         var res = new List<int>();
         if (root == null) return res;
-        Traversal(root, res);
+        st.Push(root);
+        while (st.Count != 0)
+        {
+            var node = st.Pop();
+            res.Add(node.val);
+            if (node.right != null)
+                st.Push(node.right);
+            if (node.left != null)
+                st.Push(node.left);
+        }
         return res;
+    }
 
-    }
-    public void Traversal(TreeNode cur, IList<int> res)
-    {
-        if (cur == null) return;
-        res.Add(cur.val);
-        Traversal(cur.left, res);
-        Traversal(cur.right, res);
-    }
 }
 // @lc code=end
 
