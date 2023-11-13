@@ -43,20 +43,47 @@ public class Solution
     // }
 
     // 迭代
+    // public IList<int> PreorderTraversal(TreeNode root)
+    // {
+    //     var st = new Stack<TreeNode>();
+    //     var res = new List<int>();
+    //     if (root == null) return res;
+    //     st.Push(root);
+    //     while (st.Count != 0)
+    //     {
+    //         var node = st.Pop();
+    //         res.Add(node.val);
+    //         if (node.right != null)
+    //             st.Push(node.right);
+    //         if (node.left != null)
+    //             st.Push(node.left);
+    //     }
+    //     return res;
+    // }
     public IList<int> PreorderTraversal(TreeNode root)
     {
-        var st = new Stack<TreeNode>();
         var res = new List<int>();
+        var st = new Stack<TreeNode>();
         if (root == null) return res;
         st.Push(root);
         while (st.Count != 0)
         {
-            var node = st.Pop();
-            res.Add(node.val);
-            if (node.right != null)
-                st.Push(node.right);
-            if (node.left != null)
-                st.Push(node.left);
+            var node = st.Peek();
+            if (node == null)
+            {
+                st.Pop();
+                node = st.Peek();
+                st.Pop();
+                res.Add(node.val);
+            }
+            else
+            {
+                st.Pop();
+                if (node.right != null) st.Push(node.right);
+                if (node.left != null) st.Push(node.left);
+                st.Push(node);
+                st.Push(null);
+            }
         }
         return res;
     }

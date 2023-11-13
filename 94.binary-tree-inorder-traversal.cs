@@ -42,26 +42,53 @@ public class Solution
     //     Traversal(cur.right, res);
     // }
     // 迭代
+    // public IList<int> InorderTraversal(TreeNode root)
+    // {
+    //     var st = new Stack<TreeNode>();
+    //     var res = new List<int>();
+    //     var cur = root;
+
+    //     while (st.Count != 0 || cur != null)
+    //     {
+    //         if (cur != null)
+    //         {
+    //             st.Push(cur);
+    //             cur = cur.left;
+    //         }
+    //         else
+    //         {
+    //             cur = st.Pop();
+    //             res.Add(cur.val);
+    //             cur = cur.right;
+    //         }
+
+    //     }
+    //     return res;
+    // }
     public IList<int> InorderTraversal(TreeNode root)
     {
-        var st = new Stack<TreeNode>();
         var res = new List<int>();
-        var cur = root;
-
-        while (st.Count != 0 || cur != null)
+        var st = new Stack<TreeNode>();
+        if (root == null) return res;
+        st.Push(root);
+        while (st.Count != 0)
         {
-            if (cur != null)
+            var node = st.Peek();
+            if (node == null)
             {
-                st.Push(cur);
-                cur = cur.left;
+                st.Pop();
+                node = st.Peek();
+                st.Pop();
+                res.Add(node.val);
             }
             else
             {
-                cur = st.Pop();
-                res.Add(cur.val);
-                cur = cur.right;
+                st.Pop();
+                if (node.right != null) st.Push(node.right);
+                st.Push(node);
+                st.Push(null);
+                if (node.left != null) st.Push(node.left);
             }
-
         }
         return res;
     }

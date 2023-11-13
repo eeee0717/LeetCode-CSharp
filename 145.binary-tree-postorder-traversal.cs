@@ -42,6 +42,23 @@ public class Solution
     //     res.Add(cur.val);
     // }
     // 迭代
+    // public IList<int> PostorderTraversal(TreeNode root)
+    // {
+    //     var res = new List<int>();
+    //     var st = new Stack<TreeNode>();
+    //     if (root == null) return res;
+    //     st.Push(root);
+    //     while (st.Count != 0)
+    //     {
+    //         var cur = st.Pop();
+    //         res.Add(cur.val);
+    //         if (cur.left != null) st.Push(cur.left);
+    //         if (cur.right != null) st.Push(cur.right);
+    //     }
+    //     res.Reverse(0, res.Count());
+    //     return res;
+    // }
+    // 统一迭代法
     public IList<int> PostorderTraversal(TreeNode root)
     {
         var res = new List<int>();
@@ -50,12 +67,24 @@ public class Solution
         st.Push(root);
         while (st.Count != 0)
         {
-            var cur = st.Pop();
-            res.Add(cur.val);
-            if (cur.left != null) st.Push(cur.left);
-            if (cur.right != null) st.Push(cur.right);
+            var node = st.Peek();
+            if (node == null)
+            {
+                st.Pop();
+                node = st.Peek();
+                st.Pop();
+                res.Add(node.val);
+            }
+            else
+            {
+                st.Pop();
+                if (node.left != null) st.Push(node.left);
+                if (node.right != null) st.Push(node.right);
+                st.Push(node);
+                st.Push(null);
+            }
         }
-        res.Reverse(0, res.Count());
+        res.Reverse(0, res.Count);
         return res;
     }
 
