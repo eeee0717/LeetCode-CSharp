@@ -46,11 +46,11 @@ public class Solution
 
 /*
 // @lcpr case=start
-// [10,1,2,7,6,1,5]\n8,\n
+// [10,1,2,7,6,1,5]\n8\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [2,5,2,1,2]\n5,\n
+// [2,5,2,1,2]\n5\n
 // @lcpr case=end
 
  */
