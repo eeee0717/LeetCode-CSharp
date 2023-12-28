@@ -1,7 +1,7 @@
 /*
  * @lc app=leetcode.cn id=376 lang=csharp
  * @lcpr version=30112
- *
+ *∑∑
  * [376] 摆动序列
  */
 
