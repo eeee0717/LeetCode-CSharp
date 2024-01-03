@@ -27,6 +27,7 @@ public class Solution
                 five--;
                 ten++;
             }
+            
             if (bill == 20)
             {
                 if (ten > 0 && five > 0)
