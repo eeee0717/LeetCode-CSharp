@@ -1,6 +1,12 @@
 {
     "version": 1,
     "all_bricks": {
+        "2": {
+            "submit_time": [
+                1709778521
+            ],
+            "type": 2
+        },
         "3": {
             "submit_time": [
                 1706322296
