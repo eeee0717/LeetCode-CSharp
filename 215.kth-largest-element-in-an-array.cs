@@ -10,9 +10,11 @@
 
 // @lcpr-template-end
 // @lc code=start
-public class Solution {
-    public int FindKthLargest(int[] nums, int k) {
-
+public class Solution
+{
+    public int FindKthLargest(int[] nums, int k)
+    {
+        return nums.OrderByDescending(x => x).Skip(k - 1).Take(1).Single();
     }
 }
 // @lc code=end
